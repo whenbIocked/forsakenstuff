@@ -190,24 +190,27 @@ end)
 MakeNotif("Gen Pathfinding Shit", "It Loaded!", 5, Color3.fromRGB(115, 194, 89))
 
 local function GetProfilePicture()
-	local PlayerID = game:GetService("Players").LocalPlayer.UserId
-	local request = request or http_request or syn.request
-	local response = request({
-		Url = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="
-			.. PlayerID
-			.. "&size=180x180&format=png",
-		Method = "GET",
-		Headers = {
-			["User-Agent"] = "Mozilla/5.0",
-		},
-	})
-	local urlStart, urlEnd = string.find(response.Body, "https://[%w-_%.%?%.:/%+=&]+")
-	if urlStart and urlEnd then
-		ProfilePicture = string.sub(response.Body, urlStart, urlEnd)
-	else
-		ProfilePicture = "https://cdn.sussy.dev/bleh.jpg"
-	end
+    local PlayerID = Players.LocalPlayer.UserId
+    local req = request or http_request or syn.request
+    local res = req({
+        Url = ("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=%d&size=180x180&format=png")
+            :format(PlayerID),
+        Method = "GET",
+        -- only Content-Type is allowed
+        Headers = { ["Content-Type"] = "application/json" },
+    })
+
+    local ok, body = pcall(function()
+        return HttpService:JSONDecode(res.Body)
+    end)
+
+    if ok and body and body.data and body.data[1] and body.data[1].imageUrl then
+        ProfilePicture = body.data[1].imageUrl
+    else
+        ProfilePicture = "https://cdn.sussy.dev/bleh.jpg"
+    end
 end
+
 
 if DCWebhook then
 	GetProfilePicture()
