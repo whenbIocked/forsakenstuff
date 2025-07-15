@@ -15,15 +15,6 @@ local HttpService = game:GetService("HttpService")
 
 local DCWebhook = (getgenv and getgenv().DiscordWebhook) or false
 local GenTime = tonumber(getgenv and getgenv().GeneratorTime) or 2.5
-
--- local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
--- if queueteleport then
--- 	queueteleport([[
---         if getgenv then getgenv().DiscordWebhook = "]] .. tostring(DCWebhook) .. [[" end
---         loadstring(game:HttpGet('https://raw.githubusercontent.com/ivannetta/ShitScripts/main/PathfindGens.lua'))()
---     ]])
--- end
-
 local Nnnnnnotificvationui
 local AliveNotificaiotna = {}
 local ProfilePicture = ""
@@ -187,7 +178,7 @@ task.spawn(function()
 	end
 end)
 
-MakeNotif("Gen Pathfinding Shit", "It Loaded!", 5, Color3.fromRGB(115, 194, 89))
+MakeNotif("Generator Pathfinding", "Loaded!", 5, Color3.fromRGB(115, 194, 89))
 
 local function GetProfilePicture()
     local PlayerID = Players.LocalPlayer.UserId
@@ -629,7 +620,7 @@ local function DidiDie()
 						end)(),
 					0xFF0000,
 					ProfilePicture,
-					".gg/fartsaken | <3"
+					"whenblocked"
 				)
 				task.wait(0.5)
 				teleportToRandomServer()
