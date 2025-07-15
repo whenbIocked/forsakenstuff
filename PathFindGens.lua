@@ -4,9 +4,9 @@ if not game:IsLoaded() then
 end
 
 -- CONFIGURATION
-getgenv().LoadTime = "5"              -- Delay before starting
-getgenv().DiscordWebhook = ""         -- Optional: Add webhook URL
-getgenv().GeneratorTime = "2.5"       -- Don't go below 2.5
+getgenv().LoadTime = "5"
+getgenv().DiscordWebhook = ""
+getgenv().GeneratorTime = "2.5"
 
 -- Wait for LoadTime
 task.wait(tonumber(getgenv().LoadTime))
