@@ -489,11 +489,8 @@ local function PathFinding(generator)
 		end
 
 		if not reachedWaypoint then
-			if game:GetService("Players").LocalPlayer.Character:FindFirstChild("SpeedMultipliers"):FindFirstChild("Sprinting").Value < 1.1 then
-				VIMVIM:SendKeyEvent(true, Enum.KeyCode.LeftShift, false, nil)
-			end
-			return false
-		end
+    return false
+end
 	end
 
 	for _, node in ipairs(activeNodes) do
