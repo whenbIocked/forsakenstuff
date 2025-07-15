@@ -184,9 +184,16 @@ local function walkToGenerator(gen)
     return true
 end
 
--- Generator runner
+-- Generator runner (Updated)
 local function runGenerators()
     local gens = findGenerators()
+    if #gens == 0 then
+        notify("No Generators Found", "Teleporting to another server...", 4, Color3.fromRGB(255, 120, 0))
+        task.wait(1)
+        teleportToRandomServer()
+        return
+    end
+
     for _, gen in ipairs(gens) do
         if walkToGenerator(gen) then
             notify("Starting Generator", gen.Name, 3, Color3.fromRGB(0, 255, 0))
@@ -200,6 +207,7 @@ local function runGenerators()
             end
         end
     end
+
     local balance = LocalPlayer:FindFirstChild("PlayerData") and LocalPlayer.PlayerData.Stats.Currency.Money.Value or "?"
     sendWebhook("Generators Complete", "Balance: $" .. balance, 0x00FF00)
     teleportToRandomServer()
