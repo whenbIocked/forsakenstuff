@@ -187,7 +187,7 @@ task.spawn(function()
 	end
 end)
 
-MakeNotif("Generator Pathfinding", "Loaded!", 5, Color3.fromRGB(115, 194, 89))
+MakeNotif("Gen Pathfinding Shit", "It Loaded!", 5, Color3.fromRGB(115, 194, 89))
 
 local function GetProfilePicture()
 	local PlayerID = game:GetService("Players").LocalPlayer.UserId
